@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Maintainer>
+    <Icon>https://raw.githubusercontent.com/coreylane/unraid-ca-templates/master/images/avatar.jpg</Icon>
+    <Profile>
+        Cloud and DevOps guy contributing useful tools to the CA portfolio with a
+        focus on high-quality images, efficiency, and open-source projects.
+    </Profile>
+    <DonateLink>paypal.me/lanecorey</DonateLink>
+    <DonateText>Please consider tipping if you find my work useful.</DonateText>
+</Maintainer>
