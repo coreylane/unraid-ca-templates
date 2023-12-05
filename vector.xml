@@ -26,6 +26,6 @@
     <DonateText />
     <DonateLink />
     <Requires />
-    <Config Name="Configuration Directory" Target="/etc/vector" Default="/mnt/user/appdata/vector" Mode="rw" Description="Place your vector.toml in this directory" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/vector</Config>
+    <Config Name="Configuration Directory" Target="/etc/vector" Default="/mnt/user/appdata/vector" Mode="rw" Description="Place your vector configuration file in this directory" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/vector</Config>
     <Config Name="VECTOR_CONFIG" Target="VECTOR_CONFIG" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">VECTOR_CONFIG</Config>
 </Container>
