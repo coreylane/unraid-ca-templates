@@ -9,23 +9,35 @@
     <Privileged>false</Privileged>
     <Support>https://forums.unraid.net/topic/139397-support-vector-support-thread-coreylane-repo/</Support>
     <Project>https://github.com/vectordotdev/vector</Project>
-    <Overview>Vector is a high-performance, end-to-end (agent &amp;amp; aggregator) observability
+    <Overview>Vector is a high-performance, end-to-end (agent &amp; aggregator) observability
     data pipeline that puts you in control of your observability data. Collect, transform, and
     route all your logs, metrics, and traces to any vendors you want today and any other vendors
     you may want tomorrow. Vector enables dramatic cost reduction, novel data enrichment, and
     data security where you need it, not where it is most convenient for your vendors.
-    Additionally, it is open source and up to 10x faster than every alternative in the space.</Overview>
+    Additionally, it is open source and up to 10x faster than every alternative in the space.
+
+    The image has no default configuration. Put vector.yaml in the configuration directory
+    before the first start. To collect the logs of your other containers with the docker_logs
+    source, keep the Docker socket path.</Overview>
+    <Changes>
+### 2026-09-27
+- Fix: the VECTOR_CONFIG variable held the text "VECTOR_CONFIG", so Vector did not start ("Config file not found in path"). It is now /etc/vector/vector.yaml.
+- Add the Docker socket (read only) for the docker_logs source.
+- Add the data directory /var/lib/vector for disk buffers and checkpoints.
+- The configuration directory is now read only.
+    </Changes>
     <Category>Cloud: Productivity: Tools:</Category>
     <WebUI />
-    <TemplateURL />
-    <Icon>https://raw.githubusercontent.com/coreylane/unraid-ca-templates/master/images/vector.png</Icon>
+    <TemplateURL>https://raw.githubusercontent.com/coreylane/unraid-ca-templates/main/vector.xml</TemplateURL>
+    <Icon>https://raw.githubusercontent.com/coreylane/unraid-ca-templates/main/images/vector.png</Icon>
     <ExtraParams />
     <PostArgs />
     <CPUset />
-    <DateInstalled>1684362301</DateInstalled>
     <DonateText />
     <DonateLink />
     <Requires />
-    <Config Name="Configuration Directory" Target="/etc/vector" Default="/mnt/user/appdata/vector" Mode="rw" Description="Place your vector configuration file in this directory" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/vector</Config>
-    <Config Name="VECTOR_CONFIG" Target="VECTOR_CONFIG" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">VECTOR_CONFIG</Config>
+    <Config Name="Configuration Directory" Target="/etc/vector" Default="/mnt/user/appdata/vector/config" Mode="ro" Description="Put vector.yaml in this directory. The image has no default configuration." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/vector/config</Config>
+    <Config Name="Data Directory" Target="/var/lib/vector" Default="/mnt/user/appdata/vector/data" Mode="rw" Description="The data_dir of Vector: disk buffers and source checkpoints." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/vector/data</Config>
+    <Config Name="Docker Socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="ro" Description="Needed only for the docker_logs source. Remove it if you do not collect container logs." Type="Path" Display="always" Required="false" Mask="false">/var/run/docker.sock</Config>
+    <Config Name="VECTOR_CONFIG" Target="VECTOR_CONFIG" Default="/etc/vector/vector.yaml" Mode="" Description="Path of the configuration file in the container. Separate several files with commas. For a TOML file, use /etc/vector/vector.toml." Type="Variable" Display="advanced" Required="true" Mask="false">/etc/vector/vector.yaml</Config>
 </Container>
