@@ -1,0 +1,20 @@
+vector.xml
+  s_cfcb83552719b9::t_acfbb96156345c 12,17-28,31-32,39-41
+  s_cfcb83552719b9::t_fa8a026d04f99c 42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8f94c88f8522376f12c07276420b672462f5156b",
+  "prompts": {},
+  "sessions": {
+    "s_cfcb83552719b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "976f692a-ea6e-45ec-90a8-e82829f4afe7",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "coreylane <corey@garbanzomedia.com>"
+    }
+  }
+}
